@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>About Us | HTML in My Style</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* About page specific styles */
+        .about-hero {
+            position: relative;
+            padding: 6rem 0;
+            background-color: var(--bg-primary);
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .about-content {
+            padding: 5rem 0;
+        }
+        
+        .about-section {
+            margin-bottom: 5rem;
+        }
+        
+        .about-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-grid.reverse {
+            direction: rtl;
+        }
+        
+        .about-grid.reverse .about-text {
+            direction: ltr;
+        }
+        
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), transparent);
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            line-height: 1.8;
+        }
+        
+        .team-section {
+            padding: 5rem 0;
+            background-color: var(--bg-secondary);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-card {
+            background-color: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .team-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-normal);
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.05);
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .team-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-info p {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .team-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(227, 79, 38, 0.1);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-normal);
+        }
+        
+        .team-social a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .value-card {
+            background-color: var(--bg-primary);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 50%, rgba(227, 79, 38, 0.05) 100%);
+            z-index: -1;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .value-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .value-card p {
+            color: var(--text-secondary);
+        }
+        
+        /* Responsive styles */
+        @media screen and (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-grid.reverse {
+                direction: ltr;
+            }
+            
+            .about-text h2 {
+                font-size: 2rem;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-hero p {
+                font-size: 1rem;
+            }
+            
+            .about-text h2 {
+                font-size: 1.75rem;
+            }
+            
+            .team-grid, .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="tech-pattern"></div>
+    <div class="gradient-blob"></div>
+    
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <span class="html-bracket">&lt;</span>
+                <span class="logo-text">HTML</span>
+                <span class="html-bracket">/&gt;</span>
+                <span class="tagline">in my style</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="html_index.html"><i class="fas fa-code"></i> Learn HTML</a></li>
+                    <li><a href="resources.html"><i class="fas fa-book"></i> Resources</a></li>
+                    <li><a href="playground.html"><i class="fas fa-laptop-code"></i> Playground</a></li>
+                    <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div data-aos="fade-up">
+                <h1>About <span class="highlight">HTML in My Style</span></h1>
+                <p>We're on a mission to make learning HTML accessible, interactive, and enjoyable for everyone.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Content Section -->
+    <section class="about-content">
+        <div class="container">
+            <!-- Our Story Section -->
+            <div class="about-section">
+                <div class="about-grid" data-aos="fade-up">
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg" alt="Our Story">
+                    </div>
+                    <div class="about-text">
+                        <h2>Our Story</h2>
+                        <p>HTML in My Style was born out of a simple idea: learning to code should be accessible, engaging, and fun for everyone. We noticed that many coding platforms were either too complex for beginners or too basic for those wanting to advance their skills.</p>
+                        <p>Founded in 2023 by a team of passionate web developers and educators, our platform combines interactive learning experiences with practical projects. We focus on teaching not just the syntax of HTML, but also best practices, accessibility considerations, and modern web development techniques.</p>
+                        <p>Today, our community has grown to over 10,000 learners worldwide, from complete beginners to professional developers refreshing their skills.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Our Mission Section -->
+            <div class="about-section">
+                <div class="about-grid reverse" data-aos="fade-up">
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Our Mission">
+                    </div>
+                    <div class="about-text">
+                        <h2>Our Mission</h2>
+                        <p>We believe that coding literacy is becoming increasingly important in today's digital world. Our mission is to empower individuals with the knowledge and skills to create for the web, regardless of their background or prior experience.</p>
+                        <p>We're committed to breaking down barriers to learning by providing:</p>
+                        <ul style="list-style: disc; padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary);">
+                            <li>Free, high-quality educational content</li>
+                            <li>Interactive coding exercises with immediate feedback</li>
+                            <li>A supportive community where questions are encouraged</li>
+                            <li>Real-world projects that build practical skills</li>
+                            <li>Accessibility features for learners of all abilities</li>
+                        </ul>
+                        <p>By focusing on these core principles, we aim to create a learning experience that's not just educational, but truly transformative.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We constantly explore new teaching methods and technologies to provide the most effective learning experience.</p>
+                </div>
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>We foster a supportive environment where learners can collaborate, share ideas, and grow together.</p>
+                </div>
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Accessibility</h3>
+                    <p>We believe education should be accessible to everyone, regardless of their background or circumstances.</p>
+                </div>
+                <div class="value-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We are committed to maintaining the highest standards in our educational content and platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="about-content">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Meet Our Team</h2>
+                <p>The passionate educators and developers behind HTML in My Style</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-image">
+                        <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Team Member">
+                    </div>
+                    <div class="team-info">
+                        <h3>Alex Johnson</h3>
+                        <p>Founder & Lead Instructor</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-image">
+                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" alt="Team Member">
+                    </div>
+                    <div class="team-info">
+                        <h3>Sarah Williams</h3>
+                        <p>Content Developer</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-image">
+                        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg" alt="Team Member">
+                    </div>
+                    <div class="team-info">
+                        <h3>Michael Chen</h3>
+                        <p>Senior Front-end Developer</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-image">
+                        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" alt="Team Member">
+                    </div>
+                    <div class="team-info">
+                        <h3>Emily Rodriguez</h3>
+                        <p>User Experience Designer</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content" data-aos="zoom-in">
+                <h2>Join Our Community</h2>
+                <p>Start your HTML journey today and connect with thousands of learners around the world</p>
+                <a href="html_index.html" class="btn btn-white">Start Learning Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <span class="html-bracket">&lt;</span>
+                        <span class="logo-text">HTML</span>
+                        <span class="html-bracket">/&gt;</span>
+                        <span class="tagline">in my style</span>
+                    </div>
+                    <p>A modern, interactive platform for learning HTML and web development from scratch to professional level.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="html_index.html">Learn HTML</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="playground.html">Playground</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Courses</h3>
+                    <ul>
+                        <li><a href="#">HTML Fundamentals</a></li>
+                        <li><a href="#">HTML Forms & Tables</a></li>
+                        <li><a href="#">Semantic HTML</a></li>
+                        <li><a href="#">Responsive Design</a></li>
+                        <li><a href="#">CSS Basics</a></li>
+                        <li><a href="#">JavaScript for Beginners</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Learning Street, Web Dev City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@htmlinmystyle.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2025 HTML in My Style. All rights reserved.</p>
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
