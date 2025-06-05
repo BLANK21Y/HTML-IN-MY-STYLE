@@ -236,45 +236,59 @@ document.addEventListener('DOMContentLoaded', initApp);
 
 // Add this to the end of your app.js file
 
-// Page Transition Element
-const createPageTransition = () => {
-  const pageTransition = document.createElement('div');
-  pageTransition.className = 'page-transition';
-  document.body.appendChild(pageTransition);
-  return pageTransition;
-};
+// Create page transition element
+function createPageTransition() {
+  // Check if it already exists
+  if (!document.querySelector('.page-transition')) {
+    const pageTransition = document.createElement('div');
+    pageTransition.className = 'page-transition';
+    document.body.appendChild(pageTransition);
+  }
+}
 
 // Set up tag link click handlers
 function setupTagClickHandlers() {
-  // Create the transition element if it doesn't exist
-  let pageTransition = document.querySelector('.page-transition');
-  if (!pageTransition) {
-    pageTransition = createPageTransition();
-  }
+  // Create the transition element
+  createPageTransition();
   
-  // Add click handlers to all tag links
+  // Get all tag links
   const tagLinks = document.querySelectorAll('.tag-link, .tag-element');
   
   tagLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
-      // Only handle links to HTML files (not external links)
-      const href = this.getAttribute('href');
-      if (href && !href.startsWith('http')) {
-        e.preventDefault();
-        
-        // Activate the transition
-        pageTransition.classList.add('active');
-        
-        // Navigate after transition completes
-        setTimeout(() => {
-          window.location.href = href;
-        }, 500); // Match this to your CSS transition time
-      }
-    });
+    // Remove any existing listeners first to prevent duplicates
+    link.removeEventListener('click', handleTagClick);
+    // Add new click listener
+    link.addEventListener('click', handleTagClick);
   });
 }
 
-// Add this to the initApp function
+// Handle tag click event
+function handleTagClick(e) {
+  const href = this.getAttribute('href');
+  
+  // Only handle links to HTML files (not external links)
+  if (href && !href.startsWith('http') && href.endsWith('.html')) {
+    e.preventDefault();
+    
+    // Get the transition element
+    const pageTransition = document.querySelector('.page-transition');
+    
+    // Activate the transition
+    if (pageTransition) {
+      pageTransition.classList.add('active');
+      
+      // Navigate after transition completes
+      setTimeout(() => {
+        window.location.href = href;
+      }, 500); // Match this to your CSS transition time
+    } else {
+      // Fallback if transition element doesn't exist
+      window.location.href = href;
+    }
+  }
+}
+
+// Modify your initApp function to include setupTagClickHandlers
 function initApp() {
   createCategories();
   createAlphabeticalList();
@@ -282,4 +296,12 @@ function initApp() {
   setupSmoothScrolling();
   setupIntersectionObserver();
   setupTagClickHandlers(); // Add this line
+}
+
+// If the page is already loaded, set up the handlers immediately
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  setTimeout(setupTagClickHandlers, 1);
+} else {
+  // Otherwise wait for DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', setupTagClickHandlers);
 }
