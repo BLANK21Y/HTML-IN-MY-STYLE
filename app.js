@@ -233,3 +233,53 @@ function debounce(func, wait) {
 
 // Initialize the application when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initApp);
+
+// Add this to the end of your app.js file
+
+// Page Transition Element
+const createPageTransition = () => {
+  const pageTransition = document.createElement('div');
+  pageTransition.className = 'page-transition';
+  document.body.appendChild(pageTransition);
+  return pageTransition;
+};
+
+// Set up tag link click handlers
+function setupTagClickHandlers() {
+  // Create the transition element if it doesn't exist
+  let pageTransition = document.querySelector('.page-transition');
+  if (!pageTransition) {
+    pageTransition = createPageTransition();
+  }
+  
+  // Add click handlers to all tag links
+  const tagLinks = document.querySelectorAll('.tag-link, .tag-element');
+  
+  tagLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      // Only handle links to HTML files (not external links)
+      const href = this.getAttribute('href');
+      if (href && !href.startsWith('http')) {
+        e.preventDefault();
+        
+        // Activate the transition
+        pageTransition.classList.add('active');
+        
+        // Navigate after transition completes
+        setTimeout(() => {
+          window.location.href = href;
+        }, 500); // Match this to your CSS transition time
+      }
+    });
+  });
+}
+
+// Add this to the initApp function
+function initApp() {
+  createCategories();
+  createAlphabeticalList();
+  setupSearch();
+  setupSmoothScrolling();
+  setupIntersectionObserver();
+  setupTagClickHandlers(); // Add this line
+}
