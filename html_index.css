@@ -545,31 +545,19 @@ section {
 
 /* Page Transition */
 .page-transition {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: var(--primary-color);
-z-index: 9999;
-transform: translateY(100%);
-transition: transform 0.5s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary);
+  z-index: 9999;
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out;
+  pointer-events: none; /* Allow clicks through when not active */
 }
 
 .page-transition.active {
-transform: translateY(0);
-}
-
-/* Theme Toggle Animation */
-.theme-transition {
-animation: themeTransition 0.5s ease-in-out;
-}
-
-@keyframes themeTransition {
-0% {
-opacity: 0;
-}
-100% {
-opacity: 1;
-}
+  transform: translateY(0);
+  pointer-events: all; /* Block clicks when active */
 }
