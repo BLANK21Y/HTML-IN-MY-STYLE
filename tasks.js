@@ -739,79 +739,62 @@ class HTMLLearningPlatform {
             day: 'numeric'
         });
         
-        // Create a simple certificate using canvas
-        this.createCertificate(name, currentDate, format);
+         // Load the original certificate template and overlay text
+        this.loadCertificateTemplate(name, currentDate, format);
     }
     
-    createCertificate(name, date, format) {
-        // Create canvas
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
+    loadCertificateTemplate(name, date, format) {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
         
-        // Set canvas size
-        canvas.width = 800;
-        canvas.height = 600;
+        img.onload = () => {
+            // Create canvas with the same dimensions as the template
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = img.width;
+            canvas.height = img.height;
+            
+            // Draw the original template
+            ctx.drawImage(img, 0, 0);
+            
+            // Overlay the user's name and current date
+            this.overlayTextOnCertificate(ctx, name, date, canvas.width, canvas.height);
+            
+            // Download the certificate
+            this.downloadCertificate(canvas, format, name);
+        };
         
-        // Background
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        img.onerror = () => {
+            console.error('Failed to load certificate template');
+            alert('Could not load certificate template. Please ensure the image file exists at 4.png');
+        };
         
-        // Border
-        ctx.strokeStyle = '#e34c26';
-        ctx.lineWidth = 10;
-        ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
-        
-        // Inner border
-        ctx.strokeStyle = '#f16529';
-        ctx.lineWidth = 3;
-        ctx.strokeRect(40, 40, canvas.width - 80, canvas.height - 80);
-        
-        // Title
-        ctx.fillStyle = '#e34c26';
-        ctx.font = 'bold 48px Arial';
+        // Load the original 4.png template
+        img.src = '4.png';
+    }
+    
+    overlayTextOnCertificate(ctx, name, date, canvasWidth, canvasHeight) {
+        // Set text properties
         ctx.textAlign = 'center';
-        ctx.fillText('Certificate of Completion', canvas.width / 2, 120);
+        ctx.fillStyle = '#000000';
         
-        // Subtitle
-        ctx.fillStyle = '#333333';
-        ctx.font = '24px Arial';
-        ctx.fillText('HTML Learning Platform', canvas.width / 2, 160);
+        // Name position (where "RAMA KRISHNA" appears in the template)
+        const nameX = canvasWidth / 2;
+        const nameY = canvasHeight * 0.485;
         
-        // This certifies that
-        ctx.fillStyle = '#666666';
-        ctx.font = '20px Arial';
-        ctx.fillText('This certifies that', canvas.width / 2, 220);
+        // Date position - moved slightly higher from bottom center
+        const dateX = canvasWidth / 2; // Centered horizontally
+        const dateY = canvasHeight * 0.88; // Moved up from 0.92 to 0.88
         
-        // Name
-        ctx.fillStyle = '#e34c26';
-        ctx.font = 'bold 36px Arial';
-        ctx.fillText(name, canvas.width / 2, 280);
+        // Draw name
+        ctx.font = `bold ${Math.floor(canvasWidth * 0.045)}px Arial`;
+        ctx.fillText(name.toUpperCase(), nameX, nameY);
         
-        // Has successfully completed
-        ctx.fillStyle = '#666666';
-        ctx.font = '20px Arial';
-        ctx.fillText('has successfully completed all 30 tasks in the', canvas.width / 2, 320);
-        ctx.fillText('HTML Learning Platform course', canvas.width / 2, 350);
-        
-        // Date
-        ctx.fillStyle = '#333333';
-        ctx.font = '18px Arial';
-        ctx.fillText(`Completed on ${date}`, canvas.width / 2, 420);
-        
-        // Signature line
-        ctx.strokeStyle = '#cccccc';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(canvas.width / 2 - 100, 480);
-        ctx.lineTo(canvas.width / 2 + 100, 480);
-        ctx.stroke();
-        
-        ctx.fillStyle = '#999999';
-        ctx.font = '14px Arial';
-        ctx.fillText('HTML Learning Platform', canvas.width / 2, 500);
-        
-        // Download the certificate
-        this.downloadCertificate(canvas, format, name);
+        // Draw date in center position, slightly higher
+        ctx.font = `${Math.floor(canvasWidth * 0.022)}px Arial`; // Slightly larger font for better visibility
+        ctx.fillStyle = '#333333'; // Slightly darker for better contrast
+        ctx.fillText(date, dateX, dateY);
     }
     
     downloadCertificate(canvas, format, name) {
