@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="tasks.css">
 </head>
 <body>
-    <!-- Global Back Button -->
-    <button class="global-back-btn" onclick="window.location.href='index.html'">← Back</button>
-
     <div class="theme-toggle">
         <button class="theme-btn" id="themeToggle">🌙</button>
     </div>
 
     <div class="container" id="mainPlatform">
         <header class="header">
-            <h1>HTML Learning Platform</h1>
-            <p>Master HTML through interactive tasks and earn your certificate</p>
+            <button class="header-back-btn" onclick="window.location.href='index.html'">← Back</button>
+            <div class="header-content">
+                <h1>HTML Learning Platform</h1>
+                <p>Master HTML through interactive tasks and earn your certificate</p>
+            </div>
         </header>
 
         <section class="progress-overview">
@@ -275,7 +275,6 @@
 
     <div class="task-editor hidden" id="taskEditor">
         <div class="editor-header">
-            <button class="back-btn" id="backToTasks">← Back to Tasks</button>
             <span id="currentTaskTitle">Task Title</span>
         </div>
         <div class="task-instructions">
@@ -293,6 +292,7 @@
                 <div class="editor-controls">
                     <button class="control-btn run-btn" id="runCode">Run</button>
                     <button class="control-btn validate-btn" id="validateCode">Validate</button>
+                    <button class="control-btn back-btn" id="backToTasks">← Back to Tasks</button>
                 </div>
             </div>
             <div class="preview-side">
