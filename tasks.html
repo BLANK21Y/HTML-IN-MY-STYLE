@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Learning Platform</title>
+    <link rel="stylesheet" href="tasks.css">
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeToggle" class="theme-btn">🌙</button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Main Learning Platform -->
+        <div id="mainPlatform" class="main-platform">
+            <!-- Header -->
+            <header class="header">
+                <h1>HTML Learning Platform</h1>
+                <p>Master HTML through interactive tasks and earn your certificate</p>
+            </header>
+
+            <!-- Overall Progress -->
+            <div class="progress-overview">
+                <div class="overall-progress">
+                    <h3>Overall Progress</h3>
+                    <div class="progress-bar">
+                        <div id="overallProgressFill" class="progress-fill"></div>
+                    </div>
+                    <span id="overallProgressText">0/30 Tasks Completed</span>
+                </div>
+            </div>
+
+            <!-- Task Sections -->
+            <div class="task-sections">
+                <!-- Beginner Section -->
+                <div class="task-section" data-level="beginner">
+                    <h2>🟢 Beginner Level</h2>
+                    <div class="section-progress">
+                        <div class="progress-bar">
+                            <div id="beginnerProgress" class="progress-fill"></div>
+                        </div>
+                        <span id="beginnerProgressText">0/10 Tasks</span>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>Basic HTML Structure</h3>
+                        <p>Create a simple HTML page with a heading and paragraph</p>
+                        <button class="start-task-btn" data-task="beginner-1">Start Task</button>
+                        <div class="task-status" id="beginner-1-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Headings</h3>
+                        <p>Learn to use different heading levels (h1-h6)</p>
+                        <button class="start-task-btn" data-task="beginner-2">Start Task</button>
+                        <div class="task-status" id="beginner-2-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>Text Formatting</h3>
+                        <p>Apply bold, italic, and underline formatting to text</p>
+                        <button class="start-task-btn" data-task="beginner-3">Start Task</button>
+                        <div class="task-status" id="beginner-3-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Lists</h3>
+                        <p>Create ordered and unordered lists</p>
+                        <button class="start-task-btn" data-task="beginner-4">Start Task</button>
+                        <div class="task-status" id="beginner-4-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Links</h3>
+                        <p>Create hyperlinks to other pages and websites</p>
+                        <button class="start-task-btn" data-task="beginner-5">Start Task</button>
+                        <div class="task-status" id="beginner-5-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Images</h3>
+                        <p>Insert and configure images in your webpage</p>
+                        <button class="start-task-btn" data-task="beginner-6">Start Task</button>
+                        <div class="task-status" id="beginner-6-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Line Breaks</h3>
+                        <p>Use line breaks and horizontal rules</p>
+                        <button class="start-task-btn" data-task="beginner-7">Start Task</button>
+                        <div class="task-status" id="beginner-7-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Comments</h3>
+                        <p>Add comments to your HTML code</p>
+                        <button class="start-task-btn" data-task="beginner-8">Start Task</button>
+                        <div class="task-status" id="beginner-8-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Attributes</h3>
+                        <p>Use HTML attributes like id and class</p>
+                        <button class="start-task-btn" data-task="beginner-9">Start Task</button>
+                        <div class="task-status" id="beginner-9-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Div Elements</h3>
+                        <p>Create divisions and sections using div tags</p>
+                        <button class="start-task-btn" data-task="beginner-10">Start Task</button>
+                        <div class="task-status" id="beginner-10-status"></div>
+                    </div>
+                </div>
+
+                <!-- Intermediate Section -->
+                <div class="task-section" data-level="intermediate">
+                    <h2>🟡 Intermediate Level</h2>
+                    <div class="section-progress">
+                        <div class="progress-bar">
+                            <div id="intermediateProgress" class="progress-fill"></div>
+                        </div>
+                        <span id="intermediateProgressText">0/10 Tasks</span>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Forms</h3>
+                        <p>Create a contact form with various input types</p>
+                        <button class="start-task-btn" data-task="intermediate-1">Start Task</button>
+                        <div class="task-status" id="intermediate-1-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Tables</h3>
+                        <p>Create structured data tables with headers</p>
+                        <button class="start-task-btn" data-task="intermediate-2">Start Task</button>
+                        <div class="task-status" id="intermediate-2-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>Form Validation</h3>
+                        <p>Add validation attributes to form inputs</p>
+                        <button class="start-task-btn" data-task="intermediate-3">Start Task</button>
+                        <div class="task-status" id="intermediate-3-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Multimedia</h3>
+                        <p>Embed audio and video elements</p>
+                        <button class="start-task-btn" data-task="intermediate-4">Start Task</button>
+                        <div class="task-status" id="intermediate-4-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Iframe</h3>
+                        <p>Embed external content using iframes</p>
+                        <button class="start-task-btn" data-task="intermediate-5">Start Task</button>
+                        <div class="task-status" id="intermediate-5-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Meta Tags</h3>
+                        <p>Add metadata to your HTML document</p>
+                        <button class="start-task-btn" data-task="intermediate-6">Start Task</button>
+                        <div class="task-status" id="intermediate-6-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Canvas</h3>
+                        <p>Create a basic canvas element for graphics</p>
+                        <button class="start-task-btn" data-task="intermediate-7">Start Task</button>
+                        <div class="task-status" id="intermediate-7-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Progress Bar</h3>
+                        <p>Create progress and meter elements</p>
+                        <button class="start-task-btn" data-task="intermediate-8">Start Task</button>
+                        <div class="task-status" id="intermediate-8-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Details/Summary</h3>
+                        <p>Create collapsible content sections</p>
+                        <button class="start-task-btn" data-task="intermediate-9">Start Task</button>
+                        <div class="task-status" id="intermediate-9-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Datalist</h3>
+                        <p>Create input fields with predefined options</p>
+                        <button class="start-task-btn" data-task="intermediate-10">Start Task</button>
+                        <div class="task-status" id="intermediate-10-status"></div>
+                    </div>
+                </div>
+
+                <!-- Advanced Section -->
+                <div class="task-section" data-level="advanced">
+                    <h2>🔴 Advanced Level</h2>
+                    <div class="section-progress">
+                        <div class="progress-bar">
+                            <div id="advancedProgress" class="progress-fill"></div>
+                        </div>
+                        <span id="advancedProgressText">0/10 Tasks</span>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>Semantic HTML</h3>
+                        <p>Build a semantic webpage structure with proper HTML5 elements</p>
+                        <button class="start-task-btn" data-task="advanced-1">Start Task</button>
+                        <div class="task-status" id="advanced-1-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Accessibility</h3>
+                        <p>Implement ARIA attributes and accessibility features</p>
+                        <button class="start-task-btn" data-task="advanced-2">Start Task</button>
+                        <div class="task-status" id="advanced-2-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Microdata</h3>
+                        <p>Add structured data using microdata attributes</p>
+                        <button class="start-task-btn" data-task="advanced-3">Start Task</button>
+                        <div class="task-status" id="advanced-3-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Web Components</h3>
+                        <p>Create custom HTML elements and templates</p>
+                        <button class="start-task-btn" data-task="advanced-4">Start Task</button>
+                        <div class="task-status" id="advanced-4-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML5 Storage</h3>
+                        <p>Implement local storage and session storage</p>
+                        <button class="start-task-btn" data-task="advanced-5">Start Task</button>
+                        <div class="task-status" id="advanced-5-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Geolocation</h3>
+                        <p>Access user location using HTML5 geolocation API</p>
+                        <button class="start-task-btn" data-task="advanced-6">Start Task</button>
+                        <div class="task-status" id="advanced-6-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Drag and Drop</h3>
+                        <p>Implement drag and drop functionality</p>
+                        <button class="start-task-btn" data-task="advanced-7">Start Task</button>
+                        <div class="task-status" id="advanced-7-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Web Workers</h3>
+                        <p>Create background scripts using web workers</p>
+                        <button class="start-task-btn" data-task="advanced-8">Start Task</button>
+                        <div class="task-status" id="advanced-8-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Service Workers</h3>
+                        <p>Implement offline functionality with service workers</p>
+                        <button class="start-task-btn" data-task="advanced-9">Start Task</button>
+                        <div class="task-status" id="advanced-9-status"></div>
+                    </div>
+                    
+                    <div class="task-card">
+                        <h3>HTML Performance Optimization</h3>
+                        <p>Optimize HTML for better performance and SEO</p>
+                        <button class="start-task-btn" data-task="advanced-10">Start Task</button>
+                        <div class="task-status" id="advanced-10-status"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Section -->
+            <div class="certificate-section">
+                <h2>🏆 Certificate</h2>
+                <div class="certificate-preview">
+                    <img src="4.jpg" alt="Certificate Template" class="certificate-template">
+                </div>
+                
+                <div id="certificateTracker" class="certificate-tracker locked">
+                    <h3>🔒 Certificate Locked</h3>
+                    <p>Complete all tasks to unlock your certificate</p>
+                    <div class="completion-status">0/30 Tasks Completed</div>
+                </div>
+
+                <div id="certificateGenerator" class="certificate-generator hidden">
+                    <h3>🎉 Congratulations!</h3>
+                    <p>You've completed all tasks! Generate your certificate:</p>
+                    <div class="name-input">
+                        <label for="certificateName">Enter your name:</label>
+                        <input type="text" id="certificateName" placeholder="John Doe">
+                    </div>
+                    <div class="download-options">
+                        <label for="downloadFormat">Choose format:</label>
+                        <select id="downloadFormat">
+                            <option value="png">PNG</option>
+                            <option value="jpg">JPG</option>
+                            <option value="jpeg">JPEG</option>
+                            <option value="pdf">PDF</option>
+                        </select>
+                    </div>
+                    <button id="generateCertificate" class="generate-btn">Generate Certificate</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Task Editor (Hidden by default) -->
+        <div id="taskEditor" class="task-editor hidden">
+            <!-- Editor Header -->
+            <div class="editor-header">
+                <button id="backToTasks" class="back-btn">← Back to Tasks</button>
+                <h2 id="currentTaskTitle">Task Title</h2>
+            </div>
+            
+            <!-- Task Instructions -->
+            <div class="task-instructions">
+                <h3>Instructions:</h3>
+                <p id="taskInstructions">Task instructions will appear here</p>
+            </div>
+
+            <!-- Editor Layout -->
+            <div class="editor-layout">
+                <!-- Code Editor Side -->
+                <div class="editor-side">
+                    <div class="editor-tabs">
+                        <div class="tab active">HTML</div>
+                    </div>
+                    <div class="code-editor">
+                        <textarea id="codeEditor" placeholder="Write your HTML code here..."></textarea>
+                    </div>
+                    <div class="editor-controls">
+                        <button id="runCode" class="control-btn run-btn">Run</button>
+                        <button id="validateCode" class="control-btn validate-btn">Validate</button>
+                    </div>
+                </div>
+
+                <!-- Preview Side -->
+                <div class="preview-side">
+                    <div class="output-tabs">
+                        <div class="tab active">Preview</div>
+                    </div>
+                    <div class="preview-pane">
+                        <iframe id="previewFrame"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Validation Result -->
+            <div id="validationResult" class="validation-result hidden"></div>
+        </div>
+    </div>
+
+    <script src="tasks.js"></script>
+</body>
+</html>
