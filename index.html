@@ -40,13 +40,15 @@ box-sizing: border-box;
 body {
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 margin: 0;
-padding: 0 5px;
+padding: 0;
 background-color: var(--light-bg);
 color: var(--dark-text);
 transition: var(--transition-fast);
 line-height: 1.6;
 scroll-behavior: smooth;
 min-width: 320px;
+width: 100%;
+overflow-x: hidden;
 }
 
 body.dark-theme {
@@ -64,6 +66,7 @@ top: 0;
 z-index: 1000;
 transition: var(--transition-fast);
 color: #000000; /* Black text for light theme */
+width: 100%;
 }
 
 .dark-theme header {
@@ -211,6 +214,10 @@ padding: 4rem 0;
 min-height: 70vh;
 position: relative;
 overflow: visible;
+max-width: 1400px;
+margin: 0 auto;
+width: 100%;
+box-sizing: border-box;
 }
 
 .hero-section::before {
@@ -1055,48 +1062,138 @@ animation: pulse 2s infinite;
 /* Responsive Design */
 @media (max-width: 1200px) {
 .hero-title { font-size: 2.5rem; }
-.hero-section { padding: 3rem 0; }
+.hero-section { padding: 3rem 5%; }
 .code-display { max-width: 400px; }
+.main-content { padding: 0 5%; }
 }
 
 @media (max-width: 992px) {
-.hero-section { flex-direction: column; }
-.hero-content { padding-right: 0; margin-bottom: 2rem; text-align: center; }
-.hero-buttons { justify-content: center; flex-wrap: wrap; }
-.hero-title::after { left: 50%; transform: translateX(-50%); }
-.hero-description { margin-left: auto; margin-right: auto; }
+.hero-section { 
+flex-direction: column; 
+padding: 3rem 5%;
+}
+.hero-content { 
+padding-right: 0; 
+margin-bottom: 2rem; 
+text-align: center; 
+}
+.hero-buttons { 
+justify-content: center; 
+flex-wrap: wrap; 
+}
+.hero-title::after { 
+left: 50%; 
+transform: translateX(-50%); 
+}
+.hero-description { 
+margin-left: auto; 
+margin-right: auto; 
+}
 .code-display { max-width: 100%; }
-.features-grid, .courses-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.features-grid, .courses-grid { 
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+}
+.main-content { padding: 0 5%; }
 }
 
 @media (max-width: 768px) {
-body { padding: 0 8px; }
-.header-container { flex-direction: column; padding: 1rem 5%; }
-.logo { margin-bottom: 1rem; font-size: 1.4rem; }
-nav ul { flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
-nav li a { padding: 0.5rem 0.8rem; font-size: 0.9rem; }
+body { 
+padding: 0; 
+}
+.header-container { 
+flex-direction: column; 
+padding: 1rem 5%; 
+}
+.logo { 
+margin-bottom: 1rem; 
+font-size: 1.4rem; 
+}
+nav ul { 
+flex-wrap: wrap; 
+justify-content: center; 
+gap: 0.6rem; 
+}
+nav li a { 
+padding: 0.5rem 0.8rem; 
+font-size: 0.9rem; 
+}
 .section-title { font-size: 2rem; }
-.section-subtitle { font-size: 1rem; margin-bottom: 2rem; }
-.features-grid, .courses-grid { grid-template-columns: 1fr; }
-.testimonial-card { min-width: 260px; max-width: 260px; padding: 1.5rem; }
+.section-subtitle { 
+font-size: 1rem; 
+margin-bottom: 2rem; 
+}
+.features-grid, .courses-grid { 
+grid-template-columns: 1fr; 
+}
+.testimonial-card { 
+min-width: 260px; 
+max-width: 260px; 
+padding: 1.5rem; 
+}
 .footer-container { grid-template-columns: 1fr; }
-.footer-bottom { flex-direction: column; text-align: center; gap: 1.2rem; }
+.footer-bottom { 
+flex-direction: column; 
+text-align: center; 
+gap: 1.2rem; 
+}
 .footer-bottom-links { justify-content: center; }
+.hero-section { padding: 3rem 5%; }
+.main-content { padding: 0 5%; }
+
+/* Mobile positioning for theme toggle and back-to-top */
+.theme-switch {
+right: 15px;
+bottom: 80px;
+}
+
+.back-to-top {
+right: 15px;
+bottom: 20px;
+}
 }
 
 @media (max-width: 576px) {
-body { padding: 0 10px; }
+body { 
+padding: 0; 
+}
 .hero-title { font-size: 1.8rem; }
 .hero-subtitle { font-size: 1.2rem; }
 .hero-description { font-size: 1rem; }
-.hero-buttons { flex-direction: column; width: 100%; gap: 0.8rem; }
-.btn { width: 100%; text-align: center; justify-content: center; }
+.hero-buttons { 
+flex-direction: column; 
+width: 100%; 
+gap: 0.8rem; 
+}
+.btn { 
+width: 100%; 
+text-align: center; 
+justify-content: center; 
+}
 .section-title { font-size: 1.8rem; }
 .section-subtitle { font-size: 0.9rem; }
 .cta-title { font-size: 2rem; }
 .cta-description { font-size: 1rem; }
 .code-content { font-size: 0.85rem; }
-.features-section, .courses-section, .testimonials-section, .cta-section { padding: 3rem 0; }
+.features-section, .courses-section, .testimonials-section, .cta-section { 
+padding: 3rem 0; 
+}
+.hero-section { padding: 2rem 5%; }
+.main-content { padding: 0 5%; }
+
+/* Mobile positioning for theme toggle and back-to-top */
+.theme-switch {
+right: 10px;
+bottom: 75px;
+width: 40px;
+height: 40px;
+}
+
+.back-to-top {
+right: 10px;
+bottom: 15px;
+width: 40px;
+height: 40px;
+}
 }
 
 /* Custom Scrollbar */
@@ -1361,7 +1458,7 @@ Our thoughts and philosophy behind creating this HTML learning platform.
 <div class="testimonials-slider">
 <div class="testimonial-card">
 <p class="testimonial-text">
-"HTML is the skeleton of the web. As designers, we don’t just build structures—we craft meaningful layouts that guide the user’s journey."</p>
+"HTML is the skeleton of the web. As designers, we don't just build structures—we craft meaningful layouts that guide the user's journey."</p>
 <p class="testimonial-author">- Designer</p>
 </div>
 <div class="testimonial-card">
@@ -1371,7 +1468,7 @@ Our thoughts and philosophy behind creating this HTML learning platform.
 </div>
 <div class="testimonial-card">
 <p class="testimonial-text">
-"Great code starts with clean HTML. It’s the foundation of performance, accessibility, and scalability—and we make sure you get it right from the start."</p>
+"Great code starts with clean HTML. It's the foundation of performance, accessibility, and scalability—and we make sure you get it right from the start."</p>
 <p class="testimonial-author">- Developer</p>
 </div>
 </div>
