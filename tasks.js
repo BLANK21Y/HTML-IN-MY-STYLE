@@ -798,7 +798,7 @@ Line 3</pre>`,
   setupEventListeners() {
     // Back button
     document.getElementById('backBtn').addEventListener('click', () => {
-      "index.html";
+      window.location.href = 'index.html';
     });
     
     // Theme toggle
