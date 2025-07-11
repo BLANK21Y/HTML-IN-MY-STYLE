@@ -9,9 +9,9 @@ class HTMLLearningGame {
       theme: 'light',
       editorContent: {}
     };
-    
+
     this.tasks = {
-      // BEGINNER TASKS (10 tasks)
+      // BEGINNER TASKS (10 tasks - 10 EXP each)
       'beginner-1': {
         title: 'Basic HTML Structure',
         level: 'beginner',
@@ -37,287 +37,373 @@ class HTMLLearningGame {
       },
 
       'beginner-2': {
-        title: 'HTML Text Elements',
+        title: 'HTML Headings',
         level: 'beginner',
         exp: 10,
         instructions: `
-          <h4>Task: HTML Text Elements</h4>
-          <p><strong>Instructions:</strong> Create the following text formatting:</p>
+          <h4>Task: Create HTML Headings</h4>
+          <p><strong>Instructions:</strong> Create the following heading structure:</p>
           <ul>
-            <li>An <code>h2</code> heading with "Text Formatting"</li>
-            <li>A paragraph with <code>bold</code> text saying "This is bold"</li>
-            <li>A paragraph with <code>italic</code> text saying "This is italic"</li>
+            <li>An <code>h1</code> heading with "Main Title"</li>
+            <li>An <code>h2</code> heading with "Subtitle"</li>
+            <li>An <code>h3</code> heading with "Section Title"</li>
           </ul>
           <p><strong>Reward:</strong> 10 EXP</p>
         `,
-        solution: `<h2>Text Formatting</h2>
-<p><b>This is bold</b></p>
-<p><i>This is italic</i></p>`,
+        solution: `<h1>Main Title</h1>
+<h2>Subtitle</h2>
+<h3>Section Title</h3>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<h2>text formatting</h2> <p><b>this is bold</b></p> <p><i>this is italic</i></p>`;
+          const expected = `<h1>main title</h1> <h2>subtitle</h2> <h3>section title</h3>`;
           return normalized === expected;
         }
       },
 
       'beginner-3': {
-        title: 'HTML Attributes',
+        title: 'Text Formatting',
         level: 'beginner',
         exp: 10,
         instructions: `
-          <h4>Task: HTML Attributes</h4>
-          <p><strong>Instructions:</strong> Create elements with attributes:</p>
+          <h4>Task: Text Formatting</h4>
+          <p><strong>Instructions:</strong> Create the following formatted text:</p>
           <ul>
-            <li>A <code>div</code> with id="container"</li>
-            <li>A <code>p</code> with class="highlight" and text "Highlighted paragraph"</li>
+            <li>A paragraph with <code>strong</code> text "Important text"</li>
+            <li>A paragraph with <code>em</code> text "Emphasized text"</li>
+            <li>A paragraph with <code>mark</code> text "Highlighted text"</li>
           </ul>
           <p><strong>Reward:</strong> 10 EXP</p>
         `,
-        solution: `<div id="container">
-<p class="highlight">Highlighted paragraph</p>
-</div>`,
+        solution: `<p><strong>Important text</strong></p>
+<p><em>Emphasized text</em></p>
+<p><mark>Highlighted text</mark></p>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<div id="container"> <p class="highlight">highlighted paragraph</p> </div>`;
+          const expected = `<p><strong>important text</strong></p> <p><em>emphasized text</em></p> <p><mark>highlighted text</mark></p>`;
           return normalized === expected;
         }
       },
 
       'beginner-4': {
-        title: 'HTML Comments',
+        title: 'Line Breaks and Horizontal Rules',
         level: 'beginner',
         exp: 10,
         instructions: `
-          <h4>Task: HTML Comments</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: Line Breaks and Horizontal Rules</h4>
+          <p><strong>Instructions:</strong> Create the following structure:</p>
           <ul>
-            <li>An HTML comment saying "This is a comment"</li>
-            <li>A paragraph with text "This is visible content"</li>
+            <li>A paragraph with "First line" followed by a line break and "Second line"</li>
+            <li>A horizontal rule</li>
+            <li>Another paragraph with "After the rule"</li>
           </ul>
           <p><strong>Reward:</strong> 10 EXP</p>
         `,
-        solution: `<!-- This is a comment -->
-<p>This is visible content</p>`,
+        solution: `<p>First line<br>Second line</p>
+<hr>
+<p>After the rule</p>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<!-- this is a comment --> <p>this is visible content</p>`;
+          const expected = `<p>first line<br>second line</p> <hr> <p>after the rule</p>`;
           return normalized === expected;
         }
       },
 
       'beginner-5': {
-        title: 'HTML Line Breaks',
+        title: 'HTML Comments',
         level: 'beginner',
         exp: 10,
         instructions: `
-          <h4>Task: HTML Line Breaks</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: HTML Comments</h4>
+          <p><strong>Instructions:</strong> Create the following:</p>
           <ul>
-            <li>A paragraph with "First line", then a <code>br</code> tag, then "Second line"</li>
-            <li>A horizontal rule using <code>hr</code> tag</li>
+            <li>A comment with text "This is a comment"</li>
+            <li>A paragraph with "Visible text"</li>
+            <li>Another comment with text "Another comment"</li>
           </ul>
           <p><strong>Reward:</strong> 10 EXP</p>
         `,
-        solution: `<p>First line<br>Second line</p>
-<hr>`,
+        solution: `<!-- This is a comment -->
+<p>Visible text</p>
+<!-- Another comment -->`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<p>first line<br>second line</p> <hr>`;
+          const expected = `<!-- this is a comment --> <p>visible text</p> <!-- another comment -->`;
           return normalized === expected;
         }
       },
 
       'beginner-6': {
-        title: 'HTML Div Elements',
+        title: 'Basic Div Elements',
         level: 'beginner',
         exp: 10,
         instructions: `
-          <h4>Task: HTML Div Elements</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: Basic Div Elements</h4>
+          <p><strong>Instructions:</strong> Create the following structure:</p>
           <ul>
-            <li>A <code>div</code> with class="container"</li>
-            <li>Inside it, another <code>div</code> with class="content" and text "Content inside div"</li>
+            <li>A div containing an h2 with "Section 1"</li>
+            <li>A div containing a paragraph with "Content for section 1"</li>
           </ul>
           <p><strong>Reward:</strong> 10 EXP</p>
         `,
-        solution: `<div class="container">
-<div class="content">Content inside div</div>
+        solution: `<div>
+  <h2>Section 1</h2>
+</div>
+<div>
+  <p>Content for section 1</p>
 </div>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<div class="container"> <div class="content">content inside div</div> </div>`;
+          const expected = `<div> <h2>section 1</h2> </div> <div> <p>content for section 1</p> </div>`;
           return normalized === expected;
         }
       },
 
       'beginner-7': {
-        title: 'HTML Span Elements',
+        title: 'Span Elements',
         level: 'beginner',
         exp: 10,
         instructions: `
-          <h4>Task: HTML Span Elements</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: Span Elements</h4>
+          <p><strong>Instructions:</strong> Create a paragraph with:</p>
           <ul>
-            <li>A paragraph with text "This is " followed by a <code>span</code> with class="highlight" and text "highlighted text"</li>
+            <li>Text "This is a paragraph with a "</li>
+            <li>A span containing "highlighted word"</li>
+            <li>Text " in the middle."</li>
           </ul>
           <p><strong>Reward:</strong> 10 EXP</p>
         `,
-        solution: `<p>This is <span class="highlight">highlighted text</span></p>`,
+        solution: `<p>This is a paragraph with a <span>highlighted word</span> in the middle.</p>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<p>this is <span class="highlight">highlighted text</span></p>`;
+          const expected = `<p>this is a paragraph with a <span>highlighted word</span> in the middle.</p>`;
           return normalized === expected;
         }
       },
 
       'beginner-8': {
-        title: 'HTML Emphasis Elements',
+        title: 'Preformatted Text',
         level: 'beginner',
         exp: 10,
         instructions: `
-          <h4>Task: HTML Emphasis Elements</h4>
-          <p><strong>Instructions:</strong> Create:</p>
-          <ul>
-            <li>A paragraph with <code>em</code> tag containing "emphasized text"</li>
-            <li>A paragraph with <code>strong</code> tag containing "important text"</li>
-          </ul>
+          <h4>Task: Preformatted Text</h4>
+          <p><strong>Instructions:</strong> Create a pre element with the following code:</p>
+          <pre>function hello() {
+    console.log("Hello World");
+}</pre>
           <p><strong>Reward:</strong> 10 EXP</p>
         `,
-        solution: `<p><em>emphasized text</em></p>
-<p><strong>important text</strong></p>`,
+        solution: `<pre>function hello() {
+    console.log("Hello World");
+}</pre>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<p><em>emphasized text</em></p> <p><strong>important text</strong></p>`;
+          const expected = `<pre>function hello() { console.log("hello world"); }</pre>`;
           return normalized === expected;
         }
       },
 
       'beginner-9': {
-        title: 'HTML Preformatted Text',
+        title: 'Blockquotes',
         level: 'beginner',
         exp: 10,
         instructions: `
-          <h4>Task: HTML Preformatted Text</h4>
+          <h4>Task: Blockquotes</h4>
           <p><strong>Instructions:</strong> Create:</p>
           <ul>
-            <li>A <code>pre</code> tag with the text "Line 1\nLine 2\nLine 3"</li>
+            <li>A blockquote with the text "The best way to learn HTML is by practicing."</li>
+            <li>A paragraph with "- Anonymous"</li>
           </ul>
           <p><strong>Reward:</strong> 10 EXP</p>
         `,
-        solution: `<pre>Line 1
-Line 2
-Line 3</pre>`,
+        solution: `<blockquote>The best way to learn HTML is by practicing.</blockquote>
+<p>- Anonymous</p>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<pre>line 1 line 2 line 3</pre>`;
+          const expected = `<blockquote>the best way to learn html is by practicing.</blockquote> <p>- anonymous</p>`;
           return normalized === expected;
         }
       },
 
       'beginner-10': {
-        title: 'HTML Blockquote',
+        title: 'Address Element',
         level: 'beginner',
         exp: 10,
         instructions: `
-          <h4>Task: HTML Blockquote</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: Address Element</h4>
+          <p><strong>Instructions:</strong> Create an address element with:</p>
           <ul>
-            <li>A <code>blockquote</code> with text "This is a quote from someone famous"</li>
-            <li>A <code>cite</code> tag with text "Famous Person"</li>
+            <li>Text "Contact us at:"</li>
+            <li>Line break</li>
+            <li>Text "123 Web Street, HTML City"</li>
           </ul>
           <p><strong>Reward:</strong> 10 EXP</p>
         `,
-        solution: `<blockquote>This is a quote from someone famous</blockquote>
-<cite>Famous Person</cite>`,
+        solution: `<address>Contact us at:<br>123 Web Street, HTML City</address>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<blockquote>this is a quote from someone famous</blockquote> <cite>famous person</cite>`;
+          const expected = `<address>contact us at:<br>123 web street, html city</address>`;
           return normalized === expected;
         }
       },
 
-      // INTERMEDIATE TASKS (10 tasks)
+      // INTERMEDIATE TASKS (10 tasks - 20 EXP each)
       'intermediate-1': {
-        title: 'Lists and Links',
+        title: 'Unordered Lists',
         level: 'intermediate',
-        exp: 15,
+        exp: 20,
         instructions: `
-          <h4>Task: Create Lists and Links</h4>
-          <p><strong>Instructions:</strong> Create the following HTML structure:</p>
+          <h4>Task: Create Unordered Lists</h4>
+          <p><strong>Instructions:</strong> Create an unordered list with:</p>
           <ul>
-            <li>An <code>h2</code> heading with the text "My Favorite Websites"</li>
-            <li>An unordered list with three list items, each containing a link:
-              <ul>
-                <li>Link to "https://www.google.com" with text "Google"</li>
-                <li>Link to "https://www.github.com" with text "GitHub"</li>
-                <li>Link to "https://www.stackoverflow.com" with text "Stack Overflow"</li>
-              </ul>
-            </li>
+            <li>List item "HTML"</li>
+            <li>List item "CSS"</li>
+            <li>List item "JavaScript"</li>
           </ul>
-          <p><strong>Reward:</strong> 15 EXP</p>
+          <p><strong>Reward:</strong> 20 EXP</p>
         `,
-        solution: `<h2>My Favorite Websites</h2>
-<ul>
-  <li><a href="https://www.google.com">Google</a></li>
-  <li><a href="https://www.github.com">GitHub</a></li>
-  <li><a href="https://www.stackoverflow.com">Stack Overflow</a></li>
+        solution: `<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
 </ul>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<h2>my favorite websites</h2> <ul> <li><a href="https://www.google.com">google</a></li> <li><a href="https://www.github.com">github</a></li> <li><a href="https://www.stackoverflow.com">stack overflow</a></li> </ul>`;
+          const expected = `<ul> <li>html</li> <li>css</li> <li>javascript</li> </ul>`;
           return normalized === expected;
         }
       },
 
       'intermediate-2': {
-        title: 'HTML Images',
+        title: 'Ordered Lists',
         level: 'intermediate',
-        exp: 15,
+        exp: 20,
         instructions: `
-          <h4>Task: HTML Images</h4>
-          <p><strong>Instructions:</strong> Create:</p>
-          <ul>
-            <li>An <code>img</code> tag with src="image.jpg", alt="Sample Image", and width="300"</li>
-            <li>A paragraph with text "This is an image example"</li>
-          </ul>
-          <p><strong>Reward:</strong> 15 EXP</p>
+          <h4>Task: Create Ordered Lists</h4>
+          <p><strong>Instructions:</strong> Create an ordered list with:</p>
+          <ol>
+            <li>List item "Learn HTML"</li>
+            <li>List item "Learn CSS"</li>
+            <li>List item "Learn JavaScript"</li>
+          </ol>
+          <p><strong>Reward:</strong> 20 EXP</p>
         `,
-        solution: `<img src="image.jpg" alt="Sample Image" width="300">
-<p>This is an image example</p>`,
+        solution: `<ol>
+  <li>Learn HTML</li>
+  <li>Learn CSS</li>
+  <li>Learn JavaScript</li>
+</ol>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<img src="image.jpg" alt="sample image" width="300"> <p>this is an image example</p>`;
+          const expected = `<ol> <li>learn html</li> <li>learn css</li> <li>learn javascript</li> </ol>`;
           return normalized === expected;
         }
       },
 
       'intermediate-3': {
-        title: 'HTML Tables',
+        title: 'Basic Links',
         level: 'intermediate',
-        exp: 15,
+        exp: 20,
         instructions: `
-          <h4>Task: HTML Tables</h4>
+          <h4>Task: Create Basic Links</h4>
+          <p><strong>Instructions:</strong> Create:</p>
+          <ul>
+            <li>A link to "https://www.google.com" with text "Google"</li>
+            <li>A link to "https://www.github.com" with text "GitHub"</li>
+          </ul>
+          <p><strong>Reward:</strong> 20 EXP</p>
+        `,
+        solution: `<a href="https://www.google.com">Google</a>
+<a href="https://www.github.com">GitHub</a>`,
+        validate: (code) => {
+          const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
+          const expected = `<a href="https://www.google.com">google</a> <a href="https://www.github.com">github</a>`;
+          return normalized === expected;
+        }
+      },
+
+      'intermediate-4': {
+        title: 'Images',
+        level: 'intermediate',
+        exp: 20,
+        instructions: `
+          <h4>Task: Add Images</h4>
+          <p><strong>Instructions:</strong> Create:</p>
+          <ul>
+            <li>An image with src "image.jpg" and alt text "Sample Image"</li>
+            <li>A paragraph with "This is a sample image"</li>
+          </ul>
+          <p><strong>Reward:</strong> 20 EXP</p>
+        `,
+        solution: `<img src="image.jpg" alt="Sample Image">
+<p>This is a sample image</p>`,
+        validate: (code) => {
+          const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
+          const expected = `<img src="image.jpg" alt="sample image"> <p>this is a sample image</p>`;
+          return normalized === expected;
+        }
+      },
+
+      'intermediate-5': {
+        title: 'Nested Lists',
+        level: 'intermediate',
+        exp: 20,
+        instructions: `
+          <h4>Task: Create Nested Lists</h4>
+          <p><strong>Instructions:</strong> Create an unordered list with:</p>
+          <ul>
+            <li>"Frontend" with nested list containing "HTML" and "CSS"</li>
+            <li>"Backend" with nested list containing "Node.js" and "Python"</li>
+          </ul>
+          <p><strong>Reward:</strong> 20 EXP</p>
+        `,
+        solution: `<ul>
+  <li>Frontend
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+    </ul>
+  </li>
+  <li>Backend
+    <ul>
+      <li>Node.js</li>
+      <li>Python</li>
+    </ul>
+  </li>
+</ul>`,
+        validate: (code) => {
+          const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
+          const expected = `<ul> <li>frontend <ul> <li>html</li> <li>css</li> </ul> </li> <li>backend <ul> <li>node.js</li> <li>python</li> </ul> </li> </ul>`;
+          return normalized === expected;
+        }
+      },
+
+      'intermediate-6': {
+        title: 'Tables Basic',
+        level: 'intermediate',
+        exp: 20,
+        instructions: `
+          <h4>Task: Create Basic Table</h4>
           <p><strong>Instructions:</strong> Create a table with:</p>
           <ul>
             <li>Header row with "Name" and "Age"</li>
             <li>Data row with "John" and "25"</li>
             <li>Data row with "Jane" and "30"</li>
           </ul>
-          <p><strong>Reward:</strong> 15 EXP</p>
+          <p><strong>Reward:</strong> 20 EXP</p>
         `,
         solution: `<table>
-<tr>
-<th>Name</th>
-<th>Age</th>
-</tr>
-<tr>
-<td>John</td>
-<td>25</td>
-</tr>
-<tr>
-<td>Jane</td>
-<td>30</td>
-</tr>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>25</td>
+  </tr>
+  <tr>
+    <td>Jane</td>
+    <td>30</td>
+  </tr>
 </table>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
@@ -326,194 +412,115 @@ Line 3</pre>`,
         }
       },
 
-      'intermediate-4': {
-        title: 'HTML Semantic Elements',
-        level: 'intermediate',
-        exp: 15,
-        instructions: `
-          <h4>Task: HTML Semantic Elements</h4>
-          <p><strong>Instructions:</strong> Create:</p>
-          <ul>
-            <li>A <code>header</code> with an h1 "Website Header"</li>
-            <li>A <code>nav</code> with text "Navigation"</li>
-            <li>A <code>main</code> with text "Main Content"</li>
-            <li>A <code>footer</code> with text "Website Footer"</li>
-          </ul>
-          <p><strong>Reward:</strong> 15 EXP</p>
-        `,
-        solution: `<header>
-<h1>Website Header</h1>
-</header>
-<nav>Navigation</nav>
-<main>Main Content</main>
-<footer>Website Footer</footer>`,
-        validate: (code) => {
-          const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<header> <h1>website header</h1> </header> <nav>navigation</nav> <main>main content</main> <footer>website footer</footer>`;
-          return normalized === expected;
-        }
-      },
-
-      'intermediate-5': {
-        title: 'HTML Audio Elements',
-        level: 'intermediate',
-        exp: 15,
-        instructions: `
-          <h4>Task: HTML Audio Elements</h4>
-          <p><strong>Instructions:</strong> Create:</p>
-          <ul>
-            <li>An <code>audio</code> tag with controls, src="audio.mp3"</li>
-            <li>A paragraph with text "Audio Player Example"</li>
-          </ul>
-          <p><strong>Reward:</strong> 15 EXP</p>
-        `,
-        solution: `<audio controls src="audio.mp3"></audio>
-<p>Audio Player Example</p>`,
-        validate: (code) => {
-          const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<audio controls src="audio.mp3"></audio> <p>audio player example</p>`;
-          return normalized === expected;
-        }
-      },
-
-      'intermediate-6': {
-        title: 'HTML Video Elements',
-        level: 'intermediate',
-        exp: 15,
-        instructions: `
-          <h4>Task: HTML Video Elements</h4>
-          <p><strong>Instructions:</strong> Create:</p>
-          <ul>
-            <li>A <code>video</code> tag with controls, src="video.mp4", width="400"</li>
-            <li>A paragraph with text "Video Player Example"</li>
-          </ul>
-          <p><strong>Reward:</strong> 15 EXP</p>
-        `,
-        solution: `<video controls src="video.mp4" width="400"></video>
-<p>Video Player Example</p>`,
-        validate: (code) => {
-          const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<video controls src="video.mp4" width="400"></video> <p>video player example</p>`;
-          return normalized === expected;
-        }
-      },
-
       'intermediate-7': {
-        title: 'HTML Iframe',
+        title: 'Description Lists',
         level: 'intermediate',
-        exp: 15,
+        exp: 20,
         instructions: `
-          <h4>Task: HTML Iframe</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: Create Description Lists</h4>
+          <p><strong>Instructions:</strong> Create a description list with:</p>
           <ul>
-            <li>An <code>iframe</code> with src="https://www.example.com", width="400", height="300"</li>
-            <li>A paragraph with text "Embedded Content"</li>
+            <li>Term "HTML" with description "HyperText Markup Language"</li>
+            <li>Term "CSS" with description "Cascading Style Sheets"</li>
           </ul>
-          <p><strong>Reward:</strong> 15 EXP</p>
+          <p><strong>Reward:</strong> 20 EXP</p>
         `,
-        solution: `<iframe src="https://www.example.com" width="400" height="300"></iframe>
-<p>Embedded Content</p>`,
+        solution: `<dl>
+  <dt>HTML</dt>
+  <dd>HyperText Markup Language</dd>
+  <dt>CSS</dt>
+  <dd>Cascading Style Sheets</dd>
+</dl>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<iframe src="https://www.example.com" width="400" height="300"></iframe> <p>embedded content</p>`;
+          const expected = `<dl> <dt>html</dt> <dd>hypertext markup language</dd> <dt>css</dt> <dd>cascading style sheets</dd> </dl>`;
           return normalized === expected;
         }
       },
 
       'intermediate-8': {
-        title: 'HTML Meta Tags',
+        title: 'Abbreviations and Acronyms',
         level: 'intermediate',
-        exp: 15,
+        exp: 20,
         instructions: `
-          <h4>Task: HTML Meta Tags</h4>
+          <h4>Task: Abbreviations and Acronyms</h4>
           <p><strong>Instructions:</strong> Create:</p>
           <ul>
-            <li>A <code>meta</code> tag with charset="UTF-8"</li>
-            <li>A <code>meta</code> tag with name="description" content="Sample page"</li>
-            <li>A <code>title</code> tag with "My Page"</li>
+            <li>A paragraph with "I love <abbr title="HyperText Markup Language">HTML</abbr>"</li>
+            <li>A paragraph with "And <abbr title="Cascading Style Sheets">CSS</abbr> too"</li>
           </ul>
-          <p><strong>Reward:</strong> 15 EXP</p>
+          <p><strong>Reward:</strong> 20 EXP</p>
         `,
-        solution: `<meta charset="UTF-8">
-<meta name="description" content="Sample page">
-<title>My Page</title>`,
+        solution: `<p>I love <abbr title="HyperText Markup Language">HTML</abbr></p>
+<p>And <abbr title="Cascading Style Sheets">CSS</abbr> too</p>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<meta charset="utf-8"> <meta name="description" content="sample page"> <title>my page</title>`;
+          const expected = `<p>i love <abbr title="hypertext markup language">html</abbr></p> <p>and <abbr title="cascading style sheets">css</abbr> too</p>`;
           return normalized === expected;
         }
       },
 
       'intermediate-9': {
-        title: 'HTML Details and Summary',
+        title: 'Code and Keyboard Elements',
         level: 'intermediate',
-        exp: 15,
+        exp: 20,
         instructions: `
-          <h4>Task: HTML Details and Summary</h4>
+          <h4>Task: Code and Keyboard Elements</h4>
           <p><strong>Instructions:</strong> Create:</p>
           <ul>
-            <li>A <code>details</code> element</li>
-            <li>Inside it, a <code>summary</code> with text "Click to expand"</li>
-            <li>A paragraph with text "Hidden content here"</li>
+            <li>A paragraph with "Use <code>console.log()</code> to debug"</li>
+            <li>A paragraph with "Press <kbd>Ctrl+S</kbd> to save"</li>
           </ul>
-          <p><strong>Reward:</strong> 15 EXP</p>
+          <p><strong>Reward:</strong> 20 EXP</p>
         `,
-        solution: `<details>
-<summary>Click to expand</summary>
-<p>Hidden content here</p>
-</details>`,
+        solution: `<p>Use <code>console.log()</code> to debug</p>
+<p>Press <kbd>Ctrl+S</kbd> to save</p>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<details> <summary>click to expand</summary> <p>hidden content here</p> </details>`;
+          const expected = `<p>use <code>console.log()</code> to debug</p> <p>press <kbd>ctrl+s</kbd> to save</p>`;
           return normalized === expected;
         }
       },
 
       'intermediate-10': {
-        title: 'HTML Progress and Meter',
+        title: 'Time and Date Elements',
         level: 'intermediate',
-        exp: 15,
+        exp: 20,
         instructions: `
-          <h4>Task: HTML Progress and Meter</h4>
+          <h4>Task: Time and Date Elements</h4>
           <p><strong>Instructions:</strong> Create:</p>
           <ul>
-            <li>A <code>progress</code> tag with value="70" max="100"</li>
-            <li>A <code>meter</code> tag with value="0.8"</li>
+            <li>A paragraph with "Published on <time datetime="2024-01-15">January 15, 2024</time>"</li>
+            <li>A paragraph with "Updated <time datetime="2024-02-01">February 1, 2024</time>"</li>
           </ul>
-          <p><strong>Reward:</strong> 15 EXP</p>
+          <p><strong>Reward:</strong> 20 EXP</p>
         `,
-        solution: `<progress value="70" max="100"></progress>
-<meter value="0.8"></meter>`,
+        solution: `<p>Published on <time datetime="2024-01-15">January 15, 2024</time></p>
+<p>Updated <time datetime="2024-02-01">February 1, 2024</time></p>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<progress value="70" max="100"></progress> <meter value="0.8"></meter>`;
+          const expected = `<p>published on <time datetime="2024-01-15">january 15, 2024</time></p> <p>updated <time datetime="2024-02-01">february 1, 2024</time></p>`;
           return normalized === expected;
         }
       },
 
-      // ADVANCED TASKS (10 tasks)
+      // ADVANCED TASKS (10 tasks - 30 EXP each)
       'advanced-1': {
         title: 'Contact Form',
         level: 'advanced',
-        exp: 20,
+        exp: 30,
         instructions: `
           <h4>Task: Create a Contact Form</h4>
-          <p><strong>Instructions:</strong> Create a complete contact form with the following elements:</p>
+          <p><strong>Instructions:</strong> Create a form with:</p>
           <ul>
-            <li>An <code>h3</code> heading with the text "Contact Us"</li>
-            <li>A form with the following inputs:
-              <ul>
-                <li>Text input for "Name" with placeholder "Your full name"</li>
-                <li>Email input for "Email" with placeholder "your@email.com"</li>
-                <li>Textarea for "Message" with placeholder "Your message here..."</li>
-                <li>Submit button with text "Send Message"</li>
-              </ul>
-            </li>
+            <li>Text input for "Name" with placeholder "Your full name"</li>
+            <li>Email input for "Email" with placeholder "your@email.com"</li>
+            <li>Textarea for "Message" with placeholder "Your message here..."</li>
+            <li>Submit button with text "Send Message"</li>
           </ul>
-          <p><strong>Reward:</strong> 20 EXP</p>
+          <p><strong>Reward:</strong> 30 EXP</p>
         `,
-        solution: `<h3>Contact Us</h3>
-<form>
+        solution: `<form>
   <input type="text" placeholder="Your full name">
   <input type="email" placeholder="your@email.com">
   <textarea placeholder="Your message here..."></textarea>
@@ -521,241 +528,275 @@ Line 3</pre>`,
 </form>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<h3>contact us</h3> <form> <input type="text" placeholder="your full name"> <input type="email" placeholder="your@email.com"> <textarea placeholder="your message here..."></textarea> <button type="submit">send message</button> </form>`;
+          const expected = `<form> <input type="text" placeholder="your full name"> <input type="email" placeholder="your@email.com"> <textarea placeholder="your message here..."></textarea> <button type="submit">send message</button> </form>`;
           return normalized === expected;
         }
       },
 
       'advanced-2': {
-        title: 'Advanced Form Inputs',
+        title: 'Registration Form',
         level: 'advanced',
-        exp: 20,
+        exp: 30,
         instructions: `
-          <h4>Task: Advanced Form Inputs</h4>
-          <p><strong>Instructions:</strong> Create a form with HTML5 input types:</p>
+          <h4>Task: Create Registration Form</h4>
+          <p><strong>Instructions:</strong> Create a form with:</p>
           <ul>
-            <li>Date input with type="date"</li>
-            <li>Number input with type="number" min="1" max="100"</li>
-            <li>Range input with type="range" min="0" max="10"</li>
-            <li>Color input with type="color"</li>
+            <li>Text input for username with placeholder "Username"</li>
+            <li>Password input with placeholder "Password"</li>
+            <li>Date input for birth date</li>
+            <li>Submit button with text "Register"</li>
           </ul>
-          <p><strong>Reward:</strong> 20 EXP</p>
+          <p><strong>Reward:</strong> 30 EXP</p>
         `,
         solution: `<form>
-<input type="date">
-<input type="number" min="1" max="100">
-<input type="range" min="0" max="10">
-<input type="color">
+  <input type="text" placeholder="Username">
+  <input type="password" placeholder="Password">
+  <input type="date">
+  <button type="submit">Register</button>
 </form>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<form> <input type="date"> <input type="number" min="1" max="100"> <input type="range" min="0" max="10"> <input type="color"> </form>`;
+          const expected = `<form> <input type="text" placeholder="username"> <input type="password" placeholder="password"> <input type="date"> <button type="submit">register</button> </form>`;
           return normalized === expected;
         }
       },
 
       'advanced-3': {
-        title: 'Form Validation',
+        title: 'Survey Form with Radio Buttons',
         level: 'advanced',
-        exp: 20,
+        exp: 30,
         instructions: `
-          <h4>Task: Form Validation</h4>
-          <p><strong>Instructions:</strong> Create a form with validation:</p>
+          <h4>Task: Survey Form with Radio Buttons</h4>
+          <p><strong>Instructions:</strong> Create a form with:</p>
           <ul>
-            <li>Required text input with placeholder "Required field"</li>
-            <li>Email input with required attribute</li>
-            <li>Password input with minlength="8"</li>
-            <li>Submit button</li>
+            <li>Label "How satisfied are you?"</li>
+            <li>Radio button with value "very-satisfied" and label "Very Satisfied"</li>
+            <li>Radio button with value "satisfied" and label "Satisfied"</li>
+            <li>Radio button with value "neutral" and label "Neutral"</li>
           </ul>
-          <p><strong>Reward:</strong> 20 EXP</p>
+          <p><strong>Reward:</strong> 30 EXP</p>
         `,
         solution: `<form>
-<input type="text" placeholder="Required field" required>
-<input type="email" required>
-<input type="password" minlength="8">
-<button type="submit">Submit</button>
+  <label>How satisfied are you?</label>
+  <input type="radio" name="satisfaction" value="very-satisfied">
+  <label>Very Satisfied</label>
+  <input type="radio" name="satisfaction" value="satisfied">
+  <label>Satisfied</label>
+  <input type="radio" name="satisfaction" value="neutral">
+  <label>Neutral</label>
 </form>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<form> <input type="text" placeholder="required field" required> <input type="email" required> <input type="password" minlength="8"> <button type="submit">submit</button> </form>`;
+          const expected = `<form> <label>how satisfied are you?</label> <input type="radio" name="satisfaction" value="very-satisfied"> <label>very satisfied</label> <input type="radio" name="satisfaction" value="satisfied"> <label>satisfied</label> <input type="radio" name="satisfaction" value="neutral"> <label>neutral</label> </form>`;
           return normalized === expected;
         }
       },
 
       'advanced-4': {
-        title: 'Custom Data Attributes',
+        title: 'Checkbox Form',
         level: 'advanced',
-        exp: 20,
+        exp: 30,
         instructions: `
-          <h4>Task: Custom Data Attributes</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: Checkbox Form</h4>
+          <p><strong>Instructions:</strong> Create a form with:</p>
           <ul>
-            <li>A div with data-user-id="123" and data-role="admin"</li>
-            <li>A paragraph with data-info="sample" and text "Data attributes example"</li>
+            <li>Label "Select your skills:"</li>
+            <li>Checkbox with value "html" and label "HTML"</li>
+            <li>Checkbox with value "css" and label "CSS"</li>
+            <li>Checkbox with value "js" and label "JavaScript"</li>
           </ul>
-          <p><strong>Reward:</strong> 20 EXP</p>
+          <p><strong>Reward:</strong> 30 EXP</p>
         `,
-        solution: `<div data-user-id="123" data-role="admin"></div>
-<p data-info="sample">Data attributes example</p>`,
+        solution: `<form>
+  <label>Select your skills:</label>
+  <input type="checkbox" value="html">
+  <label>HTML</label>
+  <input type="checkbox" value="css">
+  <label>CSS</label>
+  <input type="checkbox" value="js">
+  <label>JavaScript</label>
+</form>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<div data-user-id="123" data-role="admin"></div> <p data-info="sample">data attributes example</p>`;
+          const expected = `<form> <label>select your skills:</label> <input type="checkbox" value="html"> <label>html</label> <input type="checkbox" value="css"> <label>css</label> <input type="checkbox" value="js"> <label>javascript</label> </form>`;
           return normalized === expected;
         }
       },
 
       'advanced-5': {
-        title: 'Accessibility Features',
+        title: 'Select Dropdown',
         level: 'advanced',
-        exp: 20,
+        exp: 30,
         instructions: `
-          <h4>Task: Accessibility Features</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: Select Dropdown</h4>
+          <p><strong>Instructions:</strong> Create a form with:</p>
           <ul>
-            <li>A button with aria-label="Close dialog"</li>
-            <li>An input with aria-describedby="help-text"</li>
-            <li>A span with id="help-text" and text "Help information"</li>
+            <li>Label "Choose your country:"</li>
+            <li>Select dropdown with options: "USA", "Canada", "UK", "Australia"</li>
+            <li>Submit button with text "Submit"</li>
           </ul>
-          <p><strong>Reward:</strong> 20 EXP</p>
+          <p><strong>Reward:</strong> 30 EXP</p>
         `,
-        solution: `<button aria-label="Close dialog">X</button>
-<input aria-describedby="help-text">
-<span id="help-text">Help information</span>`,
+        solution: `<form>
+  <label>Choose your country:</label>
+  <select>
+    <option>USA</option>
+    <option>Canada</option>
+    <option>UK</option>
+    <option>Australia</option>
+  </select>
+  <button type="submit">Submit</button>
+</form>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<button aria-label="close dialog">x</button> <input aria-describedby="help-text"> <span id="help-text">help information</span>`;
+          const expected = `<form> <label>choose your country:</label> <select> <option>usa</option> <option>canada</option> <option>uk</option> <option>australia</option> </select> <button type="submit">submit</button> </form>`;
           return normalized === expected;
         }
       },
 
       'advanced-6': {
-        title: 'Microdata and Schema',
+        title: 'File Upload Form',
         level: 'advanced',
-        exp: 20,
+        exp: 30,
         instructions: `
-          <h4>Task: Microdata and Schema</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: File Upload Form</h4>
+          <p><strong>Instructions:</strong> Create a form with:</p>
           <ul>
-            <li>A div with itemscope itemtype="http://schema.org/Person"</li>
-            <li>Inside it, a span with itemprop="name" and text "John Doe"</li>
-            <li>A span with itemprop="jobTitle" and text "Developer"</li>
+            <li>Label "Upload your resume:"</li>
+            <li>File input that accepts ".pdf,.doc,.docx" files</li>
+            <li>Submit button with text "Upload"</li>
           </ul>
-          <p><strong>Reward:</strong> 20 EXP</p>
+          <p><strong>Reward:</strong> 30 EXP</p>
         `,
-        solution: `<div itemscope itemtype="http://schema.org/Person">
-<span itemprop="name">John Doe</span>
-<span itemprop="jobTitle">Developer</span>
-</div>`,
+        solution: `<form>
+  <label>Upload your resume:</label>
+  <input type="file" accept=".pdf,.doc,.docx">
+  <button type="submit">Upload</button>
+</form>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<div itemscope itemtype="http://schema.org/person"> <span itemprop="name">john doe</span> <span itemprop="jobtitle">developer</span> </div>`;
+          const expected = `<form> <label>upload your resume:</label> <input type="file" accept=".pdf,.doc,.docx"> <button type="submit">upload</button> </form>`;
           return normalized === expected;
         }
       },
 
       'advanced-7': {
-        title: 'Canvas Element',
+        title: 'Form with Fieldset',
         level: 'advanced',
-        exp: 20,
+        exp: 30,
         instructions: `
-          <h4>Task: Canvas Element</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: Form with Fieldset</h4>
+          <p><strong>Instructions:</strong> Create a form with:</p>
           <ul>
-            <li>A <code>canvas</code> element with width="400" height="300" id="myCanvas"</li>
-            <li>A paragraph with text "Canvas graphics area"</li>
+            <li>Fieldset with legend "Personal Information"</li>
+            <li>Text input with placeholder "First Name"</li>
+            <li>Text input with placeholder "Last Name"</li>
+            <li>Email input with placeholder "Email"</li>
           </ul>
-          <p><strong>Reward:</strong> 20 EXP</p>
+          <p><strong>Reward:</strong> 30 EXP</p>
         `,
-        solution: `<canvas width="400" height="300" id="myCanvas"></canvas>
-<p>Canvas graphics area</p>`,
+        solution: `<form>
+  <fieldset>
+    <legend>Personal Information</legend>
+    <input type="text" placeholder="First Name">
+    <input type="text" placeholder="Last Name">
+    <input type="email" placeholder="Email">
+  </fieldset>
+</form>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<canvas width="400" height="300" id="mycanvas"></canvas> <p>canvas graphics area</p>`;
+          const expected = `<form> <fieldset> <legend>personal information</legend> <input type="text" placeholder="first name"> <input type="text" placeholder="last name"> <input type="email" placeholder="email"> </fieldset> </form>`;
           return normalized === expected;
         }
       },
 
       'advanced-8': {
-        title: 'SVG Graphics',
+        title: 'Number and Range Inputs',
         level: 'advanced',
-        exp: 20,
+        exp: 30,
         instructions: `
-          <h4>Task: SVG Graphics</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: Number and Range Inputs</h4>
+          <p><strong>Instructions:</strong> Create a form with:</p>
           <ul>
-            <li>An <code>svg</code> element with width="100" height="100"</li>
-            <li>Inside it, a <code>circle</code> with cx="50" cy="50" r="40" fill="blue"</li>
+            <li>Label "Age:"</li>
+            <li>Number input with min="18" max="100"</li>
+            <li>Label "Experience (years):"</li>
+            <li>Range input with min="0" max="20"</li>
           </ul>
-          <p><strong>Reward:</strong> 20 EXP</p>
+          <p><strong>Reward:</strong> 30 EXP</p>
         `,
-        solution: `<svg width="100" height="100">
-<circle cx="50" cy="50" r="40" fill="blue"></circle>
-</svg>`,
+        solution: `<form>
+  <label>Age:</label>
+  <input type="number" min="18" max="100">
+  <label>Experience (years):</label>
+  <input type="range" min="0" max="20">
+</form>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<svg width="100" height="100"> <circle cx="50" cy="50" r="40" fill="blue"></circle> </svg>`;
+          const expected = `<form> <label>age:</label> <input type="number" min="18" max="100"> <label>experience (years):</label> <input type="range" min="0" max="20"> </form>`;
           return normalized === expected;
         }
       },
 
       'advanced-9': {
-        title: 'Web Components',
+        title: 'Search and URL Inputs',
         level: 'advanced',
-        exp: 20,
+        exp: 30,
         instructions: `
-          <h4>Task: Web Components</h4>
-          <p><strong>Instructions:</strong> Create:</p>
+          <h4>Task: Search and URL Inputs</h4>
+          <p><strong>Instructions:</strong> Create a form with:</p>
           <ul>
-            <li>A <code>template</code> element with id="my-template"</li>
-            <li>Inside it, a div with text "Template content"</li>
-            <li>A <code>slot</code> element with name="content"</li>
+            <li>Search input with placeholder "Search..."</li>
+            <li>URL input with placeholder "https://example.com"</li>
+            <li>Submit button with text "Go"</li>
           </ul>
-          <p><strong>Reward:</strong> 20 EXP</p>
+          <p><strong>Reward:</strong> 30 EXP</p>
         `,
-        solution: `<template id="my-template">
-<div>Template content</div>
-<slot name="content"></slot>
-</template>`,
+        solution: `<form>
+  <input type="search" placeholder="Search...">
+  <input type="url" placeholder="https://example.com">
+  <button type="submit">Go</button>
+</form>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<template id="my-template"> <div>template content</div> <slot name="content"></slot> </template>`;
+          const expected = `<form> <input type="search" placeholder="search..."> <input type="url" placeholder="https://example.com"> <button type="submit">go</button> </form>`;
           return normalized === expected;
         }
       },
 
       'advanced-10': {
-        title: 'Complete Website',
+        title: 'Complete Registration Form',
         level: 'advanced',
-        exp: 20,
+        exp: 30,
         instructions: `
-          <h4>Task: Complete Website Structure</h4>
-          <p><strong>Instructions:</strong> Create a complete website structure:</p>
+          <h4>Task: Complete Registration Form</h4>
+          <p><strong>Instructions:</strong> Create a comprehensive form with:</p>
           <ul>
-            <li>A <code>header</code> with h1 "My Website"</li>
-            <li>A <code>nav</code> with ul containing three li elements with links</li>
-            <li>A <code>main</code> with h2 "Welcome" and a paragraph</li>
-            <li>A <code>footer</code> with text "© 2024 My Website"</li>
+            <li>Text input for "Full Name"</li>
+            <li>Email input for "Email"</li>
+            <li>Password input for "Password"</li>
+            <li>Select for "Country" with options: "USA", "Canada", "UK"</li>
+            <li>Checkbox with label "I agree to terms"</li>
+            <li>Submit button with text "Register"</li>
           </ul>
-          <p><strong>Reward:</strong> 20 EXP</p>
+          <p><strong>Reward:</strong> 30 EXP</p>
         `,
-        solution: `<header>
-<h1>My Website</h1>
-</header>
-<nav>
-<ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-</nav>
-<main>
-<h2>Welcome</h2>
-<p>Welcome to my website</p>
-</main>
-<footer>© 2024 My Website</footer>`,
+        solution: `<form>
+  <input type="text" placeholder="Full Name">
+  <input type="email" placeholder="Email">
+  <input type="password" placeholder="Password">
+  <select>
+    <option>USA</option>
+    <option>Canada</option>
+    <option>UK</option>
+  </select>
+  <input type="checkbox">
+  <label>I agree to terms</label>
+  <button type="submit">Register</button>
+</form>`,
         validate: (code) => {
           const normalized = code.toLowerCase().replace(/\s+/g, ' ').trim();
-          const expected = `<header> <h1>my website</h1> </header> <nav> <ul> <li><a href="#home">home</a></li> <li><a href="#about">about</a></li> <li><a href="#contact">contact</a></li> </ul> </nav> <main> <h2>welcome</h2> <p>welcome to my website</p> </main> <footer>© 2024 my website</footer>`;
+          const expected = `<form> <input type="text" placeholder="full name"> <input type="email" placeholder="email"> <input type="password" placeholder="password"> <select> <option>usa</option> <option>canada</option> <option>uk</option> </select> <input type="checkbox"> <label>i agree to terms</label> <button type="submit">register</button> </form>`;
           return normalized === expected;
         }
       }
@@ -768,8 +809,112 @@ Line 3</pre>`,
   init() {
     this.loadGameState();
     this.setupEventListeners();
+    this.generateTaskCards();
     this.updateUI();
     this.updateTheme();
+  }
+  
+  // Generate task cards dynamically
+  generateTaskCards() {
+    const levels = ['beginner', 'intermediate', 'advanced'];
+    
+    levels.forEach(level => {
+      const container = document.getElementById(`${level}Tasks`);
+      if (!container) return;
+      
+      const levelTasks = Object.entries(this.tasks).filter(([taskId, task]) => 
+        task.level === level
+      );
+      
+      levelTasks.forEach(([taskId, task]) => {
+        const taskCard = this.createTaskCard(taskId, task);
+        container.appendChild(taskCard);
+      });
+    });
+  }
+  
+  createTaskCard(taskId, task) {
+    const taskCard = document.createElement('div');
+    taskCard.className = 'task-card';
+    taskCard.dataset.taskId = taskId;
+    
+    const icons = {
+      'beginner': '<polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>',
+      'intermediate': '<line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line>',
+      'advanced': '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10,9 9,9 8,9"></polyline>'
+    };
+    
+    taskCard.innerHTML = `
+      <div class="task-glow"></div>
+      <div class="task-header">
+        <div class="task-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            ${icons[task.level]}
+          </svg>
+        </div>
+        <div class="task-info">
+          <h3 class="task-title">${task.title}</h3>
+          <p class="task-description">${this.getTaskDescription(taskId)}</p>
+        </div>
+        <div class="task-exp">
+          <span class="exp-value">+${task.exp}</span>
+          <span class="exp-unit">EXP</span>
+        </div>
+      </div>
+      <div class="task-footer">
+        <button class="btn btn-primary task-start-btn">
+          <span>Start Task</span>
+          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+        <div class="task-status">
+          <svg class="icon check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+      </div>
+    `;
+    
+    return taskCard;
+  }
+  
+  getTaskDescription(taskId) {
+    const descriptions = {
+      'beginner-1': 'Create your first HTML document with headings and paragraphs',
+      'beginner-2': 'Learn to structure content with different heading levels',
+      'beginner-3': 'Apply text formatting with strong, em, and mark elements',
+      'beginner-4': 'Use line breaks and horizontal rules for content separation',
+      'beginner-5': 'Add comments to document your HTML code',
+      'beginner-6': 'Organize content using div container elements',
+      'beginner-7': 'Apply inline styling with span elements',
+      'beginner-8': 'Display preformatted text and code snippets',
+      'beginner-9': 'Create quotations using blockquote elements',
+      'beginner-10': 'Add contact information with address elements',
+      'intermediate-1': 'Create bullet point lists with unordered lists',
+      'intermediate-2': 'Create numbered lists with ordered lists',
+      'intermediate-3': 'Add navigation with hyperlinks',
+      'intermediate-4': 'Embed images with proper alt text',
+      'intermediate-5': 'Create complex nested list structures',
+      'intermediate-6': 'Display tabular data with table elements',
+      'intermediate-7': 'Define terms and descriptions with definition lists',
+      'intermediate-8': 'Add abbreviations with explanatory tooltips',
+      'intermediate-9': 'Display code snippets and keyboard shortcuts',
+      'intermediate-10': 'Add semantic time and date information',
+      'advanced-1': 'Build a complete contact form with validation',
+      'advanced-2': 'Create user registration with secure inputs',
+      'advanced-3': 'Design surveys with radio button selections',
+      'advanced-4': 'Allow multiple selections with checkboxes',
+      'advanced-5': 'Provide options with dropdown menus',
+      'advanced-6': 'Enable file uploads with input restrictions',
+      'advanced-7': 'Group form elements with fieldsets',
+      'advanced-8': 'Collect numeric data with specialized inputs',
+      'advanced-9': 'Create search and URL input fields',
+      'advanced-10': 'Build a comprehensive registration system'
+    };
+    
+    return descriptions[taskId] || 'Complete this HTML task to earn EXP';
   }
   
   // Local Storage Management
@@ -777,7 +922,9 @@ Line 3</pre>`,
     const stateToSave = {
       ...this.gameState,
       completedTasks: Array.from(this.gameState.completedTasks),
-      unlockedSolutions: Array.from(this.gameState.unlockedSolutions)
+      unlockedSolutions: Array.from(this.gameState.unlockedSolutions),
+      failedAttempts: this.gameState.failedAttempts,
+      editorContent: this.gameState.editorContent
     };
     localStorage.setItem('htmlLearningGame', JSON.stringify(stateToSave));
   }
@@ -789,7 +936,9 @@ Line 3</pre>`,
       this.gameState = {
         ...parsedState,
         completedTasks: new Set(parsedState.completedTasks || []),
-        unlockedSolutions: new Set(parsedState.unlockedSolutions || [])
+        unlockedSolutions: new Set(parsedState.unlockedSolutions || []),
+        failedAttempts: parsedState.failedAttempts || {},
+        editorContent: parsedState.editorContent || {}
       };
     }
   }
@@ -806,15 +955,15 @@ Line 3</pre>`,
       this.toggleTheme();
     });
     
-    // Task start buttons
-    document.querySelectorAll('.task-start-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+    // Task start buttons (delegated event listener)
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.task-start-btn')) {
         const taskCard = e.target.closest('.task-card');
         const taskId = taskCard.dataset.taskId;
         if (!this.gameState.completedTasks.has(taskId)) {
           this.openTaskModal(taskId);
         }
-      });
+      }
     });
     
     // Modal close
@@ -839,17 +988,26 @@ Line 3</pre>`,
     });
     
     // Validation and submission
-    document.getElementById('validateCode').addEventListener('click', () => {
-      this.validateCode();
-    });
-    
-    document.getElementById('submitCode').addEventListener('click', () => {
-      this.submitTask();
-    });
-    
-    document.getElementById('showSolution').addEventListener('click', () => {
-      this.showSolution();
-    });
+    const validateCodeBtn = document.getElementById('validateCode');
+    if (validateCodeBtn) {
+        validateCodeBtn.addEventListener('click', () => {
+            this.validateCode();
+        });
+    }
+
+    const submitCodeBtn = document.getElementById('submitCode');
+    if (submitCodeBtn) {
+        submitCodeBtn.addEventListener('click', () => {
+            this.submitTask();
+        });
+    }
+
+    const showSolutionBtn = document.getElementById('showSolution');
+    if (showSolutionBtn) {
+        showSolutionBtn.addEventListener('click', () => {
+            this.showSolution();
+        });
+    }
     
     // Certificate download
     document.getElementById('downloadCertificate').addEventListener('click', () => {
@@ -909,6 +1067,12 @@ Line 3</pre>`,
       if (progressBar) {
         progressBar.style.width = `${percentage}%`;
       }
+      
+      // Update progress percentage display
+      const progressPercentageElement = progressText?.parentElement?.querySelector('.progress-percentage');
+      if (progressPercentageElement) {
+        progressPercentageElement.textContent = `${Math.round(percentage)}%`;
+      }
     });
   }
   
@@ -917,16 +1081,14 @@ Line 3</pre>`,
       const taskCard = document.querySelector(`[data-task-id="${taskId}"]`);
       if (taskCard) {
         const isCompleted = this.gameState.completedTasks.has(taskId);
-        const startBtn = taskCard.querySelector('.task-start-btn');
+        const startBtn = taskCard.querySelector('.task-start-btn span');
         
         if (isCompleted) {
           taskCard.classList.add('completed');
-          startBtn.textContent = 'Completed';
-          startBtn.disabled = true;
+          if (startBtn) startBtn.textContent = 'Completed';
         } else {
           taskCard.classList.remove('completed');
-          startBtn.textContent = 'Start Task';
-          startBtn.disabled = false;
+          if (startBtn) startBtn.textContent = 'Start Task';
         }
       }
     });
@@ -957,7 +1119,7 @@ Line 3</pre>`,
           <circle cx="12" cy="16" r="1"></circle>
           <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
         </svg>
-        ${completedCount}/${totalTasks} Tasks Completed
+        <span>${completedCount}/${totalTasks} Tasks Completed</span>
       `;
       certificateOverlay.classList.remove('hidden');
       certificateActions.classList.remove('enabled');
@@ -1001,13 +1163,15 @@ Line 3</pre>`,
     const submitBtn = document.getElementById('submitCode');
     const feedback = document.getElementById('validationFeedback');
     
-    submitBtn.disabled = true;
-    feedback.style.display = 'none';
-    feedback.className = 'validation-feedback';
+    if (submitBtn) submitBtn.disabled = true;
+    if (feedback) feedback.style.display = 'none';
+    if (feedback) feedback.className = 'validation-feedback';
   }
   
   updateSolutionButton() {
     const showSolutionBtn = document.getElementById('showSolution');
+    if (!showSolutionBtn) return;
+
     const taskId = this.currentTask;
     const failedAttempts = this.gameState.failedAttempts[taskId] || 0;
     const isUnlocked = this.gameState.unlockedSolutions.has(taskId);
@@ -1026,6 +1190,11 @@ Line 3</pre>`,
   
   // Code Validation and Submission
   validateCode() {
+    if (!this.currentTask) {
+      console.warn('No task is currently selected.');
+      return;
+    }
+
     const code = document.getElementById('codeEditor').value.trim();
     const task = this.tasks[this.currentTask];
     const feedback = document.getElementById('validationFeedback');
@@ -1040,7 +1209,7 @@ Line 3</pre>`,
     
     if (isValid) {
       this.showValidationFeedback('Perfect! Your HTML code is correct. Click Submit to earn EXP!', 'success');
-      submitBtn.disabled = false;
+      if (submitBtn) submitBtn.disabled = false;
     } else {
       // Track failed attempts
       const taskId = this.currentTask;
@@ -1048,7 +1217,7 @@ Line 3</pre>`,
       this.saveGameState();
       
       this.showValidationFeedback('Your HTML doesn\'t match the expected output. Check the instructions and try again.', 'error');
-      submitBtn.disabled = true;
+      if (submitBtn) submitBtn.disabled = true;
       
       // Update solution button
       this.updateSolutionButton();
@@ -1057,9 +1226,11 @@ Line 3</pre>`,
   
   showValidationFeedback(message, type) {
     const feedback = document.getElementById('validationFeedback');
-    feedback.textContent = message;
-    feedback.className = `validation-feedback ${type}`;
-    feedback.style.display = 'block';
+    if (feedback) {
+      feedback.textContent = message;
+      feedback.className = `validation-feedback ${type}`;
+      feedback.style.display = 'block';
+    }
   }
   
   submitTask() {
@@ -1091,13 +1262,15 @@ Line 3</pre>`,
     
     // Update the instructions to show the answer
     const instructionsDiv = document.getElementById('taskInstructions');
-    instructionsDiv.innerHTML = `
-      <h4>🎉 Task Completed Successfully!</h4>
-      <p><strong>Congratulations!</strong> You earned ${task.exp} EXP!</p>
-      <p><strong>Here's the correct answer:</strong></p>
-      <pre><code>${task.solution.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
-      <p><strong>Great job!</strong> You can now move on to the next task.</p>
-    `;
+    if (instructionsDiv) {
+      instructionsDiv.innerHTML = `
+        <h4>🎉 Task Completed Successfully!</h4>
+        <p><strong>Congratulations!</strong> You earned ${task.exp} EXP!</p>
+        <p><strong>Here's the correct answer:</strong></p>
+        <pre><code>${task.solution.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+        <p><strong>Great job!</strong> You can now move on to the next task.</p>
+      `;
+    }
     
     // Disable all buttons since task is completed
     document.getElementById('validateCode').disabled = true;
@@ -1169,7 +1342,7 @@ Line 3</pre>`,
           a:hover { text-decoration: underline; }
           ul { padding-left: 20px; }
           form { max-width: 400px; }
-          input, textarea, button {
+          input, textarea, button, select {
             width: 100%;
             padding: 10px;
             margin: 5px 0;
@@ -1185,6 +1358,9 @@ Line 3</pre>`,
             font-weight: bold;
           }
           button:hover { background: #d63916; }
+          table { border-collapse: collapse; width: 100%; }
+          th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+          th { background-color: #f2f2f2; }
         </style>
       </head>
       <body>
@@ -1292,29 +1468,3 @@ document.addEventListener('DOMContentLoaded', () => {
   new HTMLLearningGame();
 });
 
-// Disable right-click and certain key combinations
-document.addEventListener("contextmenu", (event) => {
-  event.preventDefault();
-  alert("You are really talented!");
-});
-
-document.addEventListener("keydown", (event) => {
-  const forbiddenKeys = [
-    { ctrl: true, key: "u" },
-    { ctrl: true, shift: true, key: "i" },
-    { ctrl: true, shift: true, key: "j" },
-    { ctrl: true, key: "s" },
-    { ctrl: true, key: "h" },
-    { ctrl: true, key: "a" },
-    { ctrl: true, key: "p" },
-  ];
-
-  if (forbiddenKeys.some(k => 
-      event.ctrlKey === k.ctrl && 
-      event.shiftKey === (k.shift || false) &&
-      event.key.toLowerCase() === k.key
-  )) {
-    event.preventDefault();
-    alert("You are really talented!");
-  }
-});
